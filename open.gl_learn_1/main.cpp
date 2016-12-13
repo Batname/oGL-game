@@ -7,6 +7,12 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
+// Objects
+#include "Triangle.hpp"
+
+// Helpers
+#include "ShaderLoader.hpp"
+
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 #define WINDOW_TITLE "OPEN GL"
@@ -37,11 +43,13 @@ int main(int argc, const char * argv[]) {
         std::cout << "Failed to initialize GLEW" << std::endl;
         return EXIT_FAILURE;
     }
+
+    // create triangle
+    Triangle triangle;
     
-    // new we ready to call openJS here
-    GLuint vertexBuffer;
-    glGenBuffers(1, &vertexBuffer);
-    std::cout << vertexBuffer << std::endl;
+    // Shaders
+    ShaderLoader shader("resources/shaders/core.vs", "resources/shaders/core.frag");
+//    Shader shader("resources/shaders/core.vs", "resources/shaders/core.frag");
     
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);

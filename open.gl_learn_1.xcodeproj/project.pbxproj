@@ -14,6 +14,7 @@
 		186880C91E00964E00FEBBC8 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 186880B61E00964E00FEBBC8 /* image_helper.c */; };
 		186880CA1E00964E00FEBBC8 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 186880BB1E00964E00FEBBC8 /* SOIL2.c */; };
 		186880CD1E0096E500FEBBC8 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 186880CB1E0096E500FEBBC8 /* Triangle.cpp */; };
+		186880D11E00A30E00FEBBC8 /* ShaderLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 186880CF1E00A30E00FEBBC8 /* ShaderLoader.cpp */; };
 		189EF50F1DFE891C00D648E6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189EF50E1DFE891C00D648E6 /* main.cpp */; };
 		189EF5171DFE8BBD00D648E6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189EF5161DFE8BBD00D648E6 /* OpenGL.framework */; };
 		189EF5331DFF70D900D648E6 /* libglfw3.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 189EF5321DFF70D900D648E6 /* libglfw3.3.2.dylib */; };
@@ -67,6 +68,8 @@
 		186880C61E00964E00FEBBC8 /* stbi_pvr_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stbi_pvr_c.h; sourceTree = "<group>"; };
 		186880CB1E0096E500FEBBC8 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
 		186880CC1E0096E500FEBBC8 /* Triangle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Triangle.hpp; sourceTree = "<group>"; };
+		186880CF1E00A30E00FEBBC8 /* ShaderLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLoader.cpp; sourceTree = "<group>"; };
+		186880D01E00A30E00FEBBC8 /* ShaderLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ShaderLoader.hpp; sourceTree = "<group>"; };
 		189EF50B1DFE891C00D648E6 /* open.gl_learn_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = open.gl_learn_1; sourceTree = BUILT_PRODUCTS_DIR; };
 		189EF50E1DFE891C00D648E6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		189EF5161DFE8BBD00D648E6 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,15 @@
 			path = SOIL2;
 			sourceTree = "<group>";
 		};
+		186880CE1E00A28400FEBBC8 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				186880CF1E00A30E00FEBBC8 /* ShaderLoader.cpp */,
+				186880D01E00A30E00FEBBC8 /* ShaderLoader.hpp */,
+			);
+			name = helpers;
+			sourceTree = "<group>";
+		};
 		189EF5021DFE891C00D648E6 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +156,7 @@
 		189EF50D1DFE891C00D648E6 /* open.gl_learn_1 */ = {
 			isa = PBXGroup;
 			children = (
+				186880CE1E00A28400FEBBC8 /* helpers */,
 				186880B11E00964E00FEBBC8 /* SOIL2 */,
 				186880931E00959F00FEBBC8 /* resources */,
 				186880921E0094D200FEBBC8 /* objects */,
@@ -222,6 +235,7 @@
 			files = (
 				186880C71E00964E00FEBBC8 /* etc1_utils.c in Sources */,
 				186880CD1E0096E500FEBBC8 /* Triangle.cpp in Sources */,
+				186880D11E00A30E00FEBBC8 /* ShaderLoader.cpp in Sources */,
 				186880C91E00964E00FEBBC8 /* image_helper.c in Sources */,
 				189EF50F1DFE891C00D648E6 /* main.cpp in Sources */,
 				186880CA1E00964E00FEBBC8 /* SOIL2.c in Sources */,
