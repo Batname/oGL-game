@@ -41,6 +41,7 @@ int main(int argc, const char * argv[]) {
     // new we ready to call openJS here
     GLuint vertexBuffer;
     glGenBuffers(1, &vertexBuffer);
+    std::cout << vertexBuffer << std::endl;
     
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
