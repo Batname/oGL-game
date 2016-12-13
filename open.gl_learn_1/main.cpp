@@ -21,6 +21,11 @@ int main(int argc, const char * argv[]) {
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
         glfwPollEvents();
+        
+        // close window if user press esc
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+            glfwSetWindowShouldClose(window, GL_TRUE);
+        }
     }
     
     glfwTerminate();
