@@ -12,6 +12,9 @@ class ShaderLoader
 public:
     ShaderLoader(const GLchar * vertexPath, const GLchar * fragmentPath);
     void use();
+    
+    // getters
+    GLuint getProgram();
 private:
     GLuint program;
     

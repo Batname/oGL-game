@@ -88,6 +88,11 @@ void ShaderLoader::compile()
     glDeleteShader(fragment);
 }
 
+GLuint ShaderLoader::getProgram()
+{
+    return program;
+}
+
 void ShaderLoader::use()
 {
     glUseProgram(program);

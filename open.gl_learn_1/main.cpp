@@ -43,15 +43,16 @@ int main(int argc, const char * argv[]) {
         std::cout << "Failed to initialize GLEW" << std::endl;
         return EXIT_FAILURE;
     }
-
-    // create triangle
-    Triangle triangle;
     
     // Shaders
     ShaderLoader shader("resources/shaders/core.vs", "resources/shaders/core.frag");
-//    Shader shader("resources/shaders/core.vs", "resources/shaders/core.frag");
+  
+    // create triangle
+    Triangle triangle(&shader);
     
     while (!glfwWindowShouldClose(window)) {
+        triangle.render();
+        
         glfwSwapBuffers(window);
         glfwPollEvents();
         

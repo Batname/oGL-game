@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <GL/glew.h>
 
+#include "ShaderLoader.hpp"
+
 static float ver[] = {
     0.0f,  0.5f,
     0.5f, -0.5f,
@@ -15,7 +17,7 @@ static float ver[] = {
 class Triangle
 {
 public:
-    Triangle(float * vertices = ver);
+    Triangle(ShaderLoader *_shader, float * vertices = ver);
     
     // getters
     float * getVertices();
@@ -23,8 +25,9 @@ public:
     // public member
     void render();
 private:
+    ShaderLoader *_shader;
     float * _vertices;
-    GLuint vbo;
+    GLuint vbo, vao;
 };
 
 #endif /* Triangle_hpp */
