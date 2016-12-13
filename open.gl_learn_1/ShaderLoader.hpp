@@ -14,13 +14,10 @@ public:
     void use();
 private:
     GLuint program;
-    const GLchar *vShaderCode;
-    const GLchar *fShaderCode;
     
     const GLchar *_vertexPath;
     const GLchar *_fragmentPath;
     
-    void readFiles();
     void compile();
 };
 

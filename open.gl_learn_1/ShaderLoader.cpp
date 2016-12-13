@@ -5,11 +5,10 @@ using namespace std;
 ShaderLoader::ShaderLoader(const GLchar * vertexPath, const GLchar * fragmentPath) :
     _vertexPath(vertexPath), _fragmentPath(fragmentPath)
 {
-    readFiles();
     compile();
 }
 
-void ShaderLoader::readFiles()
+void ShaderLoader::compile()
 {
     string vertexCode;
     string fragmentCode;
@@ -39,12 +38,9 @@ void ShaderLoader::readFiles()
         cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << endl;
     }
     
-    vShaderCode = vertexCode.c_str();
-    fShaderCode = fragmentCode.c_str();
-}
+    const GLchar * vShaderCode = vertexCode.c_str();
+    const GLchar * fShaderCode = fragmentCode.c_str();
 
-void ShaderLoader::compile()
-{
     GLuint vertex, fragment;
     GLint success;
     GLchar infoLog[521];
