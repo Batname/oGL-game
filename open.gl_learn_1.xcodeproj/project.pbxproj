@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		186880911E007C1900FEBBC8 /* libGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 186880901E007C1900FEBBC8 /* libGLEW.a */; };
 		189EF50F1DFE891C00D648E6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 189EF50E1DFE891C00D648E6 /* main.cpp */; };
 		189EF5171DFE8BBD00D648E6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189EF5161DFE8BBD00D648E6 /* OpenGL.framework */; };
 		189EF5331DFF70D900D648E6 /* libglfw3.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 189EF5321DFF70D900D648E6 /* libglfw3.3.2.dylib */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		186880901E007C1900FEBBC8 /* libGLEW.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGLEW.a; path = ../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.a; sourceTree = "<group>"; };
 		189EF50B1DFE891C00D648E6 /* open.gl_learn_1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = open.gl_learn_1; sourceTree = BUILT_PRODUCTS_DIR; };
 		189EF50E1DFE891C00D648E6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		189EF5161DFE8BBD00D648E6 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				186880911E007C1900FEBBC8 /* libGLEW.a in Frameworks */,
 				189EF5331DFF70D900D648E6 /* libglfw3.3.2.dylib in Frameworks */,
 				189EF5171DFE8BBD00D648E6 /* OpenGL.framework in Frameworks */,
 			);
@@ -72,6 +75,7 @@
 		189EF5151DFE8BBD00D648E6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				186880901E007C1900FEBBC8 /* libGLEW.a */,
 				189EF5321DFF70D900D648E6 /* libglfw3.3.2.dylib */,
 				189EF5161DFE8BBD00D648E6 /* OpenGL.framework */,
 			);
@@ -232,10 +236,14 @@
 		189EF5131DFE891C00D648E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/glfw/3.2.1/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.2.1/include,
+					/usr/local/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.2.1/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -244,10 +252,14 @@
 		189EF5141DFE891C00D648E6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /usr/local/Cellar/glfw/3.2.1/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/Cellar/glfw/3.2.1/include,
+					/usr/local/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/glfw/3.2.1/lib,
+					/usr/local/Cellar/glew/2.0.0/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
