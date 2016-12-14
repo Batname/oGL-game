@@ -7,10 +7,16 @@
 
 #include "ShaderLoader.hpp"
 
+static float ver[] = {
+    0.0f,  0.5f,
+    0.5f, -0.5f,
+    -0.5f, -0.5f,
+};
+
 class Triangle
 {
 public:
-    Triangle();
+    Triangle(int verticesSize = sizeof(ver), float * vertices = ver);
     
     // getters
     
@@ -18,6 +24,8 @@ public:
     void render();
 private:
     ShaderLoader _shader;
+    int _verticesSize;
+    float * _vertices;
     GLuint vbo, vao;
 };
 

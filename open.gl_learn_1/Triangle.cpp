@@ -1,13 +1,10 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle() : _shader(ShaderLoader("resources/shaders/core.vs", "resources/shaders/core.frag"))
+Triangle::Triangle(int verticesSize, float * vertices) :
+    _shader(ShaderLoader("resources/shaders/core.vs", "resources/shaders/core.frag")),
+    _verticesSize(verticesSize),
+    _vertices(vertices)
 {
-    float vertices[] = {
-        0.0f,  0.5f,
-        0.5f, -0.5f,
-        -0.5f, -0.5f,
-    };
-    
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
     
@@ -15,7 +12,7 @@ Triangle::Triangle() : _shader(ShaderLoader("resources/shaders/core.vs", "resour
     
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, _verticesSize, _vertices, GL_STATIC_DRAW);
 
     GLint posAttrib = glGetAttribLocation(_shader.getProgram(), "position");
     glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
