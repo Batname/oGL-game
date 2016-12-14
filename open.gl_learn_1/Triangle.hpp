@@ -6,13 +6,16 @@
 #include <GL/glew.h>
 #include <math.h>
 
+#include "SOIL2/SOIL2.h"
+
 #include "ShaderLoader.hpp"
 
 static GLfloat ver[] = {
-    -0.5f,  0.5f, 1.0f, 0.0f, 0.0f, // Top-left
-    0.5f,  0.5f, 0.0f, 1.0f, 0.0f, // Top-right
-    0.5f, -0.5f, 0.0f, 0.0f, 1.0f, // Bottom-right
-    -0.5f, -0.5f, 1.0f, 1.0f, 1.0f  // Bottom-left
+    //  Position      Color             Texcoords
+    -0.5f,  0.5f,   1.0f, 0.0f, 0.0f,   0.0f, 0.0f, // Top-left
+     0.5f,  0.5f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f, // Top-right
+     0.5f, -0.5f,   0.0f, 0.0f, 1.0f,   1.0f, 1.0f, // Bottom-right
+    -0.5f, -0.5f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f  // Bottom-left
 };
 
 static GLuint elems[] = {
@@ -26,6 +29,7 @@ public:
     Triangle(GLint verticesSize = sizeof(ver), GLfloat * vertices = ver, GLint elementsSize = sizeof(elems), GLuint * elements = elems);
 
     // public member
+    void loadTexture(char * path);
     void alterAttributes();
     void render();
     void clear();
@@ -39,10 +43,9 @@ private:
     GLuint * _elements;
     
 
-    GLuint vbo, vao, ebo;
+    GLuint vbo, vao, ebo, tex;
 
-    GLint posAttrib;
-    GLint colAttrib;
+    GLint posAttrib, colAttrib, texAttrib;
 };
 
 #endif /* Triangle_hpp */
