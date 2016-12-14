@@ -3,7 +3,9 @@
 #define Triangle_hpp
 
 #include <iostream>
+#include <chrono>
 #include <GL/glew.h>
+#include <math.h>
 
 #include "ShaderLoader.hpp"
 
@@ -17,17 +19,20 @@ class Triangle
 {
 public:
     Triangle(int verticesSize = sizeof(ver), float * vertices = ver);
-    
-    // getters
-    
+
     // public member
     void render();
     void clear();
 private:
     ShaderLoader _shader;
+
     int _verticesSize;
     float * _vertices;
+
     GLuint vbo, vao;
+
+    GLint uniColor;
+    GLint posAttrib;
 };
 
 #endif /* Triangle_hpp */

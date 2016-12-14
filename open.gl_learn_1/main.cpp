@@ -43,7 +43,7 @@ int main(int argc, const char * argv[]) {
     
     // create triangle
     Triangle triangle;
-    
+
     while (!glfwWindowShouldClose(window)) {
         // Clear the colorbuffer
         glClearColor( 0.1f, 0.1f, 0.1f, 1.0f );

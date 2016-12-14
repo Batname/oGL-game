@@ -1,10 +1,9 @@
 #version 330 core
 
-// it take output from vertex shader
-
+uniform vec3 triangleColor;
 out vec4 ourColor;
 
 void main()
 {
-    ourColor = vec4(1.0, 1.0, 1.0, 1.0); // set color for our veticis
+    ourColor = vec4(triangleColor, 1.0); // set color for our veticis
 }

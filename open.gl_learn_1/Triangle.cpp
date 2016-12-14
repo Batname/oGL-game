@@ -1,26 +1,37 @@
 #include "Triangle.hpp"
 
+using namespace std;
+
+static auto t_start = chrono::high_resolution_clock::now();
+
 Triangle::Triangle(int verticesSize, float * vertices) :
     _shader(ShaderLoader("resources/shaders/core.vs", "resources/shaders/core.frag")),
     _verticesSize(verticesSize),
     _vertices(vertices)
 {
-    glGenVertexArrays(1, &vao); // generate Vertex Array Objects
-    glGenBuffers(1, &vbo); // Generate 1 buffer(Vertex Buffer Object)
+    glGenVertexArrays(1, &vao);
+    glGenBuffers(1, &vbo);
     
     glBindVertexArray(vao);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo); // active vbo object
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-    glBufferData(GL_ARRAY_BUFFER, _verticesSize, _vertices, GL_STATIC_DRAW); // copy the vertex data to array buffer
+    glBufferData(GL_ARRAY_BUFFER, _verticesSize, _vertices, GL_STATIC_DRAW);
 
-    GLint posAttrib = glGetAttribLocation(_shader.getProgram(), "position"); // etrieve a reference to the position input in the vertex shader
-    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0); // how the data for that input is retrieved from the array, 2 because it use 2 demention
+    posAttrib = glGetAttribLocation(_shader.getProgram(), "position");
+    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(posAttrib);
+    
+    uniColor = glGetUniformLocation(_shader.getProgram(), "triangleColor");
+    
+    _shader.use();
 }
 
 void Triangle::render()
 {
-    _shader.use();
+    auto t_now = chrono::high_resolution_clock::now();
+    float time = chrono::duration_cast<std::chrono::duration<float>>(t_now - t_start).count();
+    
+    glUniform3f(uniColor, (sin(time * 4.0f) + 1.0f) / 2.0f, 0.0f, 0.0f);
     glDrawArrays(GL_TRIANGLES, 0, 3); // draw primitive from the 3 vertices
 }
 
