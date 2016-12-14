@@ -2,7 +2,10 @@
 
 using namespace std;
 
-static auto t_start = chrono::high_resolution_clock::now();
+typedef std::chrono::high_resolution_clock Time;
+using float_sec = std::chrono::duration<float>;
+
+static auto t_start = Time::now();
 
 Triangle::Triangle(int verticesSize, float * vertices) :
     _shader(ShaderLoader("resources/shaders/core.vs", "resources/shaders/core.frag")),
@@ -28,8 +31,8 @@ Triangle::Triangle(int verticesSize, float * vertices) :
 
 void Triangle::render()
 {
-    auto t_now = chrono::high_resolution_clock::now();
-    float time = chrono::duration_cast<std::chrono::duration<float>>(t_now - t_start).count();
+    auto t_now = Time::now();
+    float time = chrono::duration_cast<float_sec>(t_now - t_start).count();
     
     glUniform3f(uniColor, (sin(time * 4.0f) + 1.0f) / 2.0f, 0.0f, 0.0f);
     glDrawArrays(GL_TRIANGLES, 0, 3); // draw primitive from the 3 vertices
