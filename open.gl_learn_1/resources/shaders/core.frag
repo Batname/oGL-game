@@ -1,9 +1,9 @@
 #version 330 core
 
-uniform vec3 triangleColor;
+in vec3 Color; // from .vs
 out vec4 ourColor;
 
 void main()
 {
-    ourColor = vec4(triangleColor, 1.0); // set color for our veticis
+    ourColor = vec4(Color, 1.0); // set color for our veticis
 }
