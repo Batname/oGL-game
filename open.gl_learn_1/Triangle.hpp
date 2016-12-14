@@ -29,8 +29,6 @@ public:
     Triangle(GLint verticesSize = sizeof(ver), GLfloat * vertices = ver, GLint elementsSize = sizeof(elems), GLuint * elements = elems);
 
     // public member
-    void loadTexture(char * path);
-    void alterAttributes();
     void render();
     void clear();
 private:
@@ -44,8 +42,10 @@ private:
     
 
     GLuint vbo, vao, ebo, tex;
-
     GLint posAttrib, colAttrib, texAttrib;
+    
+    void loadTexture(GLchar * texturePath);
+    void alterAttributes();
 };
 
 #endif /* Triangle_hpp */

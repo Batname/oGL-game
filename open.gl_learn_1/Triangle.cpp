@@ -9,19 +9,19 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint elementsSize, G
     _elementsSize(elementsSize),
     _elements(elements)
 {
-    glGenBuffers(1, &ebo);
     glGenVertexArrays(1, &vao);
+    
     glGenBuffers(1, &vbo);
-    glGenTextures(1, &tex);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
     
     glBindVertexArray(vao);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, _verticesSize, _vertices, GL_STATIC_DRAW);
     
+    glGenBuffers(1, &ebo);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, _elementsSize, _elements, GL_STATIC_DRAW);
     
+    glGenTextures(1, &tex);
     glBindTexture(GL_TEXTURE_2D, tex);
 
     loadTexture("resources/images/sample.png");
@@ -29,10 +29,10 @@ Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint elementsSize, G
     _shader.use();
 }
 
-void Triangle::loadTexture(char * path)
+void Triangle::loadTexture(GLchar * texturePath)
 {
     int width, height;
-    unsigned char* image = SOIL_load_image(path, &width, &height, 0, SOIL_LOAD_RGB);
+    unsigned char* image = SOIL_load_image(texturePath, &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
     SOIL_free_image_data(image);
     
@@ -62,7 +62,6 @@ void Triangle::alterAttributes()
 
 void Triangle::render()
 {
-    
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
