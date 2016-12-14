@@ -2,18 +2,24 @@
 
 using namespace std;
 
-Triangle::Triangle(int verticesSize, float * vertices) :
+Triangle::Triangle(GLint verticesSize, GLfloat * vertices, GLint elementsSize, GLuint * elements) :
     _shader(ShaderLoader("resources/shaders/core.vs", "resources/shaders/core.frag")),
     _verticesSize(verticesSize),
-    _vertices(vertices)
+    _vertices(vertices),
+    _elementsSize(elementsSize),
+    _elements(elements)
 {
+    glGenBuffers(1, &ebo);
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
     
     glBindVertexArray(vao);
+    
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
     glBufferData(GL_ARRAY_BUFFER, _verticesSize, _vertices, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, _elementsSize, _elements, GL_STATIC_DRAW);
 
     alterAttributes();    
     _shader.use();
@@ -35,8 +41,7 @@ void Triangle::alterAttributes()
 void Triangle::render()
 {
     
-    glUniform3f(posAttrib, 0.5f, 0.0f, 0.0f);
-    glDrawArrays(GL_TRIANGLES, 0, 3); // draw primitive from the 3 vertices
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
 
