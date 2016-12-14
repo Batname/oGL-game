@@ -10,6 +10,7 @@ ShaderLoader::ShaderLoader(const GLchar * vertexPath, const GLchar * fragmentPat
 
 void ShaderLoader::compile()
 {
+    // load shader code files
     string vertexCode;
     string fragmentCode;
     ifstream vShaderFile;
