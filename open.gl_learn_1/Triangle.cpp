@@ -1,7 +1,6 @@
 #include "Triangle.hpp"
 
-Triangle::Triangle(ShaderLoader * shader) :
-    _shader(shader)
+Triangle::Triangle() : _shader(ShaderLoader("resources/shaders/core.vs", "resources/shaders/core.frag"))
 {
     float vertices[] = {
         0.0f,  0.5f,
@@ -18,14 +17,14 @@ Triangle::Triangle(ShaderLoader * shader) :
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-    GLint posAttrib = glGetAttribLocation(shader->getProgram(), "position");
+    GLint posAttrib = glGetAttribLocation(_shader.getProgram(), "position");
     glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(posAttrib);
 }
 
 void Triangle::render()
 {
-    _shader->use();
+    _shader.use();
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, 3);
     glBindVertexArray(0);

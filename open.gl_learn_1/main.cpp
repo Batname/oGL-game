@@ -10,9 +10,6 @@
 // Objects
 #include "Triangle.hpp"
 
-// Helpers
-#include "ShaderLoader.hpp"
-
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
 #define WINDOW_TITLE "OPEN GL"
@@ -44,11 +41,8 @@ int main(int argc, const char * argv[]) {
         return EXIT_FAILURE;
     }
     
-    // Shaders
-    ShaderLoader shader("resources/shaders/core.vs", "resources/shaders/core.frag");
-  
     // create triangle
-    Triangle triangle(&shader);
+    Triangle triangle;
     
     while (!glfwWindowShouldClose(window)) {
         triangle.render();

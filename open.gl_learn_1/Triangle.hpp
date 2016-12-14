@@ -10,14 +10,14 @@
 class Triangle
 {
 public:
-    Triangle(ShaderLoader *_shader);
+    Triangle();
     
     // getters
     
     // public member
     void render();
 private:
-    ShaderLoader *_shader;
+    ShaderLoader _shader;
     GLuint vbo, vao;
 };
 
