@@ -21,5 +21,13 @@ Triangle::Triangle(int verticesSize, float * vertices) :
 void Triangle::render()
 {
     _shader.use();
-    glDrawArrays(GL_TRIANGLES, 0, 3); // draw primitive
+    glDrawArrays(GL_TRIANGLES, 0, 3); // draw primitive from the 3 vertices
+}
+
+
+void Triangle::clear()
+{
+    glDeleteProgram(_shader.getProgram());    
+    glDeleteBuffers(1, &vbo);
+    glDeleteVertexArrays(1, &vao);
 }

@@ -22,6 +22,7 @@ public:
     
     // public member
     void render();
+    void clear();
 private:
     ShaderLoader _shader;
     int _verticesSize;

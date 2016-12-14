@@ -15,6 +15,9 @@ public:
     
     // getters
     GLuint getProgram();
+    GLuint getVertexShader();
+    GLuint getFragmentShader();
+
 private:
     GLuint program;
     
